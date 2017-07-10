@@ -37,5 +37,49 @@
 		</script>
 		</br>
 		<button  onclick="changeco()" style="margin:15px 0px 0px 0px;">改变颜色</button>
+		</br>
+		<script>
+			function changeImage()
+			{
+			  element=document.getElementById('myimage')
+              if (element.src.match("bulbon"))
+              {
+  				element.src="http://www.runoob.com/images/pic_bulboff.gif";
+  			  }
+			  else
+  			  {
+  				element.src="http://www.runoob.com/images/pic_bulbon.gif";
+  			  }
+  		    }
+
+		</script>
+		</br>
+		<img id="myimage" onclick="changeImage()" src="http://www.runoob.com/images/pic_bulboff.gif" width="100" height="180">
+		<br />
+		<p>输入数字：</p>
+		<input id="dd" type="test" />
+		<script>
+			function myf()
+			{
+			var x=document.getElementById("dd").value;
+			if(x==""|isNaN(x))
+			{
+				alert("不是数字");
+			}
+			}
+
+		</script>
+		<button type="button" onclick="myf()">点</button>
+		<br />
+		<button type="button" onclick="myFunctions()">调外部Js</button>
+		<script src="myScript.js"></script>
+		<br />
+		<script>
+			a=5;
+			b=6;
+			c=a+b;
+			console.log(c);
+		</script>
+
 	</body>
 </html>
