@@ -25,7 +25,7 @@
 		<h1>我的第一个标题</h1>
 		<p>我的第一个段落</p>
 		<myHero>我的第一个新元素</myHero>
-		<canvas id="myCanvas" width="200" height="100" style="border:5px solid #000000;">
+		<canvas id="myCanvas" width="250" height="200" style="border:5px solid #000000;">
 			您的浏览器不支持 HTML5 canvas 标签。
 		</canvas>
 		<script>
@@ -33,6 +33,40 @@
 		var ctx=c.getContext("2d");
 		ctx.fillStyle="#FF0000";
 		ctx.fillRect(0,0,150,75);
+		</script>
+		<script>
+			var c=document.getElementById("myCanvas");
+			var cxt=c.getContext("2d");
+			ctx.moveTo(150,75);
+			ctx.lineTo(200,100);
+			ctx.stroke();
+			
+			ctx.beginPath();
+      ctx.arc(95,50,40,0,2*Math.PI);
+      ctx.stroke();
+      
+      ctx.fillStyle="#000000";
+      ctx.font="30px Arial";
+      ctx.fillText("Hello World",10,50);
+      ctx.strokeText("Hello World",10,90);
+      
+      // 创建渐变
+			var grd=ctx.createLinearGradient(0,0,100,0);
+			grd.addColorStop(0,"red");
+			grd.addColorStop(1,"white");
+			// 填充渐变
+			ctx.fillStyle=grd;
+			ctx.fillRect(10,100,150,80);
+			
+			// 创建渐变
+			var grd=ctx.createRadialGradient(75,50,5,90,60,100);
+			grd.addColorStop(0,"red");
+			grd.addColorStop(1,"white");
+			// 填充渐变
+			ctx.fillStyle=grd;
+			ctx.fillRect(110,100,150,80);
+			
+			
 		</script>
 	</body>
 </html>
