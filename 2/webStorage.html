@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="demo.appcache">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
@@ -22,6 +22,25 @@
 		 </div>
 	<br/>  
     <div id="list">  </div>  
+    <br>
+    <div style="border: 2px dashed #ccc;width:320px;text-align:center;">  
+    	<label>别名(key):</label>  
+        <input type="text" id="keyname" name="keyname" class="text"/>  
+        <br/>  
+        <label for="sitename">网站名：</label>  
+        <input type="text" id="sitename" name="sitename" class="text"/>  
+        <br/>  
+        <label for="siteurl">网 址：</label>  
+        <input type="text" id="siteurl" name="siteurl"/>  
+        <br/>  
+        <input type="button" onclick="save()" value="新增记录"/>  
+        <hr/>  
+        <label for="search_phone">输入别名(key)：</label>  
+        <input type="text" id="search_site" name="search_site"/>  
+        <input type="button" onclick="find()" value="查找网站"/>  
+        <p id="find_result"><br/></p>  
+    </div> 
+ 
     <script>
 			loadAll();
 			function save()
@@ -58,6 +77,53 @@
 			        list.innerHTML = "数据为空……";  
 	    		}  
             }      
+            function save1()
+            {
+            	var site = new Object;
+            	site.keyname=document.getElementById("keyname").value;
+            	site.sitename = document.getElementById("sitename").value;  
+    			site.siteurl = document.getElementById("siteurl").value;
+    			var str = JSON.stringify(site);
+    			localStorage.setItem(site.sitename,str);
+    			alert("保存成功");
+            }
+                //查找数据  
+    		function find1()
+    		{
+		        var search_site = document.getElementById("search_site").value;  
+		        var str = localStorage.getItem(search_site);  
+		        var find_result = document.getElementById("find_result");
+		        var site = JSON.parse(str);  
+		        find_result.innerHTML = search_site + "的网站名是：" + 				site.sitename + "，网址是：" + site.siteurl;  
+   			 }
 		</script>
+		
+		<p>计数： <output id="result"></output></p>
+<button onclick="startWorker()">开始工作</button> 
+<button onclick="stopWorker()">停止工作</button>
+
+<p><strong>注意：</strong> Internet Explorer 9 及更早 IE 版本浏览器不支持 Web Workers.</p>
+
+<script>
+var w;
+function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+            w = new Worker("demo_work.js");
+        }
+        w.onmessage = function(event) {
+            document.getElementById("result").innerHTML = event.data;
+        };
+    } else {
+        document.getElementById("result").innerHTML = "抱歉，你的浏览器不支持 Web Workers...";
+    }
+}
+
+function stopWorker() 
+{ 
+    w.terminate();
+    w = undefined;
+}
+</script>
 	</body>
 </html>
