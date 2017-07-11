@@ -64,9 +64,57 @@
 			grd.addColorStop(1,"white");
 			// 填充渐变
 			ctx.fillStyle=grd;
-			ctx.fillRect(110,100,150,80);
-			
-			
+			ctx.fillRect(110,100,150,80);			
 		</script>
+		<img id="scream" src="http://www.runoob.com/try/demo_source/img_the_scream.jpg" alt="The Scream" width="220" height="277">
+		<br />
+		<canvas id="mycanvas" width="250" height="300" style="border: 1px solid #d3d3d3;">您的浏览器不支持H5</canvas>
+	    <script>
+	    	var d = document.getElementById("mycanvas");
+	    	var ctx=d.getContext("2d");
+	    	var im = document.getElementById("scream");
+	    	
+	    	im.onload = function(){
+	    		ctx.drawImage(im,0,0);
+	    	}    	
+	    </script>
+	    <br />
+	    <svg xmln="http://www.w3.org/2000/svg" version="1.1" height="190">
+	    	<polygon points="100,10 40,180 190,60 10,60 160,180"
+	    		style="fill: lime;stroke: purple;stroke-width: 5;fill-rule: evenodd;"
+	    </svg>
+	     <math xmlns="http://www.w3.org/1998/Math/MathML">	
+         <mrow>
+            <msup><mi>a</mi><mn>2</mn></msup>
+            <mo>+</mo>
+				
+            <msup><mi>b</mi><mn>2</mn></msup>
+            <mo>=</mo>
+				
+            <msup><mi>c</mi><mn>2</mn></msup>
+         </mrow>
+       </math>
+        <math xmln="http://www.w3.org/1998/Math/MathML">	
+         <mrow>
+         	 <mrow>			
+            <mrow>			
+               <msup>
+                  <mi>x</mi>
+                  <mn>2</mn>
+               </msup>				
+               <mo>+</mo>				
+               <mrow>
+                  <mn>4</mn>
+                  <mo>⁢</mo>
+                  <mi>x</mi>
+               </mrow>				
+               <mo>+</mo>
+               <mn>4</mn>				
+            </mrow>			
+            <mo>=</mo>
+            <mn>0</mn>			 
+            </mrow>
+         </mrow>
+        </math>
 	</body>
 </html>
